@@ -4,19 +4,7 @@ from cryptography.hazmat.backends import default_backend
 
 
 def main(pkcs12_file: str, pkcs12_password: str = "", jks_alias: str = "", jks_password: str = "") -> str:
-    """
-    Main function that loads a PKCS#12 file and converts it into a Java KeyStore (JKS) format, then prints it out.
-
-    Args:
-    pkcs12_file (str): The file path to the .p12 or .pfx file to convert.
-    pkcs12_password (str, optional): The password for the PKCS#12 file. Defaults to "".
-    jks_alias (str, optional): The alias for the JKS store. Defaults to "".
-    jks_password (str, optional): The password for the JKS store. Defaults to "".
-
-    Returns:
-    str: The base64 encoded Java KeyStore as a string.
-    """
-    # Extract pk and certs from file.
+    # Extract private key and certtificates from file.
     pk, certs = load_pkcs12_file(pkcs12_file, pkcs12_password)
 
     # Use extracted values fo create a jks.
